@@ -66,3 +66,6 @@ typings/
 
 # Don't track env files
 *.env
+
+# Don't track json output
+*.json

@@ -6,7 +6,7 @@ const request = require('request');
 require('dotenv').config({ path: 'variables.env' });
 
 // Path to store output in
-const dest = "./output";
+const dest = "./output/";
 
 // Create output directory if it does not exist
 if (!fs.existsSync(dest)) {
@@ -36,7 +36,8 @@ convertExcel ('images.xlsx', undefined, undefined, (err, data) => {
     if (error) {
       console.log(error)
     } else {
-      fs.writeFile('./' + index, body, (err) => {
+      jsonParse = JSON.parse(body);
+      fs.writeFile(dest + index + ".json", JSON.stringify(jsonParse, null, 4), (err) => {
         if (err) {
             return console.log(err);
         }
