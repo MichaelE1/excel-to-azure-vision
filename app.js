@@ -13,13 +13,13 @@ if (!fs.existsSync(dest)) {
   fs.mkdirSync(dest);
 }
 
-// Store number of images to process
-const count = process.argv[2] || 1;
+// Store image number to process (default is 0)
+const index = process.argv[2] || 0;
 
 convertExcel ('images.xlsx', undefined, undefined, (err, data) => {
   const images = [];
 
-  for (let i = 0; i < count; i++) {
+  for (let i = 0; i <= index; i++) {
     images.push(data[i].vcImagePath);
   }
 
@@ -30,10 +30,20 @@ convertExcel ('images.xlsx', undefined, undefined, (err, data) => {
       'content-type': 'application/json',
       'Ocp-Apim-Subscription-Key': process.env.SUBKEY 
     },
-    body: JSON.stringify({"url": images[0]})
+    body: JSON.stringify({"url": images[index]})
   },
-  function (error, response, body) {
-    console.log(body);
+  (error, response, body) => {
+    if (error) {
+      console.log(error)
+    } else {
+      fs.writeFile('./' + index, body, (err) => {
+        if (err) {
+            return console.log(err);
+        }
+    
+        console.log("The file was written!");
+        
+      });
+    }
   });
-   
 });
