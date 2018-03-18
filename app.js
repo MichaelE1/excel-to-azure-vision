@@ -2,6 +2,9 @@ const convertExcel = require('excel-as-json').processFile;
 const fs = require('fs');
 const request = require('request');
 
+// Import environmental variables from variables.env file
+require('dotenv').config({ path: 'variables.env' });
+
 // Path to store output in
 const dest = "./output";
 
@@ -22,16 +25,15 @@ convertExcel ('images.xlsx', undefined, undefined, (err, data) => {
 
   request({
     method: 'POST',
-    
+    url: 'https://australiaeast.api.cognitive.microsoft.com/vision/v1.0/ocr?language=unk&detectOrientation=true',
+    headers: {
+      'content-type': 'application/json',
+      'Ocp-Apim-Subscription-Key': process.env.SUBKEY 
+    },
+    body: JSON.stringify({"url": images[0]})
+  },
+  function (error, response, body) {
+    console.log(body);
   });
-    
-    
-    .post("https://australiaeast.api.cognitive.microsoft.com/vision/v1.0/ocr?language=unk&detectOrientation=true").multipart:[{
-
-  }]
-
-
-
-  //console.log(images);
-
+   
 });
