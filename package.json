@@ -1,0 +1,22 @@
+{
+  "name": "excel-to-google-vision",
+  "version": "1.0.0",
+  "description": "Excel image URLs to Google Vision API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichaelE1/excel-to-google-vision.git"
+  },
+  "author": "Michael Esteban",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MichaelE1/excel-to-google-vision/issues"
+  },
+  "homepage": "https://github.com/MichaelE1/excel-to-google-vision#readme",
+  "dependencies": {
+    "excel-as-json": "^2.0.1"
+  }
+}

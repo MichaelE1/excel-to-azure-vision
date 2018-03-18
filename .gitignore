@@ -57,3 +57,9 @@ typings/
 # dotenv environment variables file
 .env
 
+# Don't track any excel or CSV files
+*.xlsx
+*.csv
+
+# Don't track any output files
+/output
