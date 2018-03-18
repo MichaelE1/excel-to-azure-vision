@@ -1,5 +1,6 @@
 const convertExcel = require('excel-as-json').processFile;
 const fs = require('fs');
+const request = require('request');
 
 // Path to store output in
 const dest = "./output";
@@ -19,6 +20,18 @@ convertExcel ('images.xlsx', undefined, undefined, (err, data) => {
     images.push(data[i].vcImagePath);
   }
 
-  console.log(images);
+  request({
+    method: 'POST',
+    
+  });
+    
+    
+    .post("https://australiaeast.api.cognitive.microsoft.com/vision/v1.0/ocr?language=unk&detectOrientation=true").multipart:[{
+
+  }]
+
+
+
+  //console.log(images);
 
 });

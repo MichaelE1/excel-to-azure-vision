@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/MichaelE1/excel-to-google-vision#readme",
   "dependencies": {
-    "excel-as-json": "^2.0.1"
+    "excel-as-json": "^2.0.1",
+    "request": "^2.85.0"
   }
 }
